@@ -1,5 +1,5 @@
-import React from 'react';
-import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
+import React, { useState } from 'react';
+import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 import './App.css';
 
 const user1Data = [
@@ -69,20 +69,18 @@ function App() {
   return (
     <Router>
       <div className="App">
-        <Switch>
-          <Route path="/user1">
-            <User1 />
-          </Route>
-          <Route path="/user2">
-            <User2 />
-          </Route>
-          <Route path="/">
-            <h1>Welcome to the FAQ App</h1>
-            <Link to="/user1">Go to User 1</Link>
-            <br />
-            <Link to="/user2">Go to User 2</Link>
-          </Route>
-        </Switch>
+        <Routes>
+          <Route path="/user1" element={<User1 />} />
+          <Route path="/user2" element={<User2 />} />
+          <Route path="/" element={
+            <div>
+              <h1>Welcome to the FAQ App</h1>
+              <Link to="/user1">Go to User 1</Link>
+              <br />
+              <Link to="/user2">Go to User 2</Link>
+            </div>
+          } />
+        </Routes>
       </div>
     </Router>
   );
